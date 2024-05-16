@@ -34,6 +34,8 @@ createBookPreviews(
   getElement("[data-list-items]")
 );
 
+//    **************************************************************************************************************************
+
 // Function to create and append options to a select element
 const createOptions = (options, defaultOption, container) => {
   const fragment = document.createDocumentFragment();
