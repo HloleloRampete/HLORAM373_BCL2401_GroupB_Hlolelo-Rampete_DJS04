@@ -1,35 +1,32 @@
 // book-preview.js
 class BookPreview extends HTMLElement {
+  // Creates a new instance of the BookPreview component.
+  constructor() {
+    super();
+    // Create a shadow root for the component
+    this.attachShadow({ mode: "open" });
+  }
 
-    /**
-     * Creates a new instance of the BookPreview component.
-     */
-    constructor() {
-        super();
-        // Create a shadow root for the component
-        this.attachShadow({ mode: "open" });
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  attributeChangedCallback(name, oldValue, newValue) {
+    this.render();
+  }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        this.render();
-    }
+  static get observedAttributes() {
+    return ["author", "id", "image", "title"];
+  }
 
-    static get observedAttributes() {
-        return ['author', 'id', 'image', 'title'];
-    }
-
-    render () {
-        const author = this.getAttribute('author');
-        const id = this.getAttribute('id');
-        const image = this.getAttribute('image');
-        const title = this.getAttribute('title');
-        // Define the template for the component
-        const template = document.createElement("template");
-        template.innerHTML = `
+  render() {
+    const author = this.getAttribute("author");
+    const id = this.getAttribute("id");
+    const image = this.getAttribute("image");
+    const title = this.getAttribute("title");
+    // Define the template for the component
+    const template = document.createElement("template");
+    template.innerHTML = `
             <style>
             .preview {
                 border-width: 0;
@@ -97,11 +94,10 @@ class BookPreview extends HTMLElement {
             </button>
         `;
 
-        // Append the template content to the shadow root
-        this.shadowRoot.innerHTML = '';
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-    }
-  
+    // Append the template content to the shadow root
+    this.shadowRoot.innerHTML = "";
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
 }
 
-customElements.define('book-preview', BookPreview);
+customElements.define("book-preview", BookPreview);
