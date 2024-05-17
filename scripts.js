@@ -10,14 +10,22 @@ const getElement = (selector) => document.querySelector(selector);
 
 // Function to create and append book previews in the DOM
 const createBookPreviews = (books, container) => {
+  const fragment = document.createDocumentFragment();
   books.forEach(({ author, id, image, title }) => {
-    const element = document.createElement("book-preview");
-    element.setAttribute("image", image);
-    element.setAttribute("title", title);
-    element.setAttribute("author", authors[author]);
+    const element = document.createElement("button");
+    element.classList = "preview";
     element.setAttribute("data-preview", id);
-    container.appendChild(element);
+    element.innerHTML = `
+            <img class="preview__image" src="${image}" />
+            <div class="preview__info">
+                <h3 class="preview__title">${title}</h3>
+                <div class="preview__author">${authors[author]}</div>
+            </div>
+        `;
+
+    fragment.appendChild(element);
   });
+  container.appendChild(fragment);
 };
 
 // Initial rendering of book previews
@@ -25,8 +33,6 @@ createBookPreviews(
   matches.slice(0, BOOKS_PER_PAGE),
   getElement("[data-list-items]")
 );
-
-//    **************************************************************************************************************************
 
 // Function to create and append options to a select element
 const createOptions = (options, defaultOption, container) => {
