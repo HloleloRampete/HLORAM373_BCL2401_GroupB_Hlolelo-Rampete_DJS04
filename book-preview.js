@@ -1,9 +1,9 @@
 // book-preview.js
 import { authors } from "./data.js";
 class BookPreview extends HTMLElement {
-    static get observedAttributes() {
-        return ["author", "id", "image", "title"];
-      }
+  static get observedAttributes() {
+    return ["book"];
+  }
   // Creates a new instance of the BookPreview component.
   constructor() {
     super();
@@ -13,20 +13,28 @@ class BookPreview extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.shadowRoot.querySelector(".preview").addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("book-click", {
+          deatil: JSON.parse(this.getAttribute("book")),
+          bubbles: true,
+          composed: true,
+        })
+      );
+    });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this.render();
+    if (name === "book" && oldValue !== newValue) {
+      this.render();
+    }
   }
 
   render() {
-    const author = this.getAttribute("author");
-    const id = this.getAttribute("id");
-    const image = this.getAttribute("image");
-    const title = this.getAttribute("title");
+    const book = JSON.parse(this.getAttribute("book"));
+    if (!book) return;
     // Define the template for the component
-    const template = document.createElement("template");
-    template.innerHTML = `
+    this.shadowRoot.innerHTML = `
             <style>
             .preview {
                 border-width: 0;
@@ -93,12 +101,7 @@ class BookPreview extends HTMLElement {
                 </div>
             </button>
         `;
-
-    // Append the template content to the shadow root
-    this.shadowRoot.innerHTML = "";
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
 
 customElements.define("book-preview", BookPreview);
-
