@@ -1,7 +1,7 @@
 // Importing data and constants from external module
 import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
 // Importing BookPreview function
-import BookPreview from './book-preview.js';
+import "./book-preview.js";
 // Initializing variables for pagination and filtering
 let page = 1;
 let matches = books;
@@ -11,13 +11,12 @@ const getElement = (selector) => document.querySelector(selector);
 
 // Function to create and append book previews in the DOM
 const createBookPreviews = (books, container) => {
-  const fragment = document.createDocumentFragment();
   books.forEach((book) => {
-    const preview = new BookPreview();
-    preview.book = book;
-    fragment.appendChild(preview);
+    const bookPreview = document.createElement("book-preview");
+    bookpreview.setAttribute("book", JSON.stringify(book));
+    container.appendChild(bookPreview);
   });
-  container.appendChild(fragment);
+ 
 };
 
 // Initial rendering of book previews

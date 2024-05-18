@@ -1,5 +1,9 @@
 // book-preview.js
+import { authors } from "./data.js";
 class BookPreview extends HTMLElement {
+    static get observedAttributes() {
+        return ["author", "id", "image", "title"];
+      }
   // Creates a new instance of the BookPreview component.
   constructor() {
     super();
@@ -13,10 +17,6 @@ class BookPreview extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     this.render();
-  }
-
-  static get observedAttributes() {
-    return ["author", "id", "image", "title"];
   }
 
   render() {
@@ -101,3 +101,4 @@ class BookPreview extends HTMLElement {
 }
 
 customElements.define("book-preview", BookPreview);
+
