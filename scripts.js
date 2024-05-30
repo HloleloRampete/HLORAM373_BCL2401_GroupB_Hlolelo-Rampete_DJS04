@@ -10,15 +10,11 @@ let matches = books;
 // Function to get DOM element by selector
 const getElement = (selector) => document.querySelector(selector);
 
-// Function to create and append book previews in the DOM
-const createBookPreviews = (books, container) => {
-  books.forEach((book) => {
-    const bookPreview = document.createElement("book-preview");
-    bookpreview.setAttribute("book", JSON.stringify(book));
-    container.appendChild(bookPreview);
-  });
- 
-};
+// Initial rendering of book previews
+createBookPreviews(
+  matches.slice(0, BOOKS_PER_PAGE),
+  getElement("[data-list-items]")
+);
 
 // Initial rendering of book previews
 createBookPreviews(
