@@ -1,6 +1,13 @@
 // Importing data and constants from external module
 import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
 import "./bookPreview.js";
+// Importing functions and custom elements from other files
+import {
+  getElement,
+  createBookPreviews,
+  createOptions,
+  applyTheme,
+} from "./functions.js";
 
 
 // Initializing variables for pagination and filtering
