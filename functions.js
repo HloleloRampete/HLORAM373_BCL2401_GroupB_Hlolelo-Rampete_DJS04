@@ -12,3 +12,10 @@ export const createBookPreviews = (books, container) => {
     });
     container.appendChild(fragment);
   };
+
+  export const createOptions = (options, defaultOption, container) => {
+    const filter = document.createElement("search-filter");
+    filter.dataset.options = JSON.stringify(options);
+    filter.dataset.defaultOption = defaultOption;
+    container.appendChild(filter);
+  };
