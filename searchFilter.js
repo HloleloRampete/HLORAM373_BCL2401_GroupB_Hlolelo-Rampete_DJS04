@@ -22,3 +22,5 @@ class SearchFilter extends HTMLElement {
         `;
       }
 }  
+
+customElements.define("search-filter", SearchFilter);
