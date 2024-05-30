@@ -18,18 +18,10 @@ createBookPreviews(
 createOptions(genres, "All Genres", getElement("[data-search-genres]"));
 createOptions(authors, "All Authors", getElement("[data-search-authors]"));
 
-// Function to apply theme based on user preference
-const applyTheme = (theme) => {
-  const isNight = theme === "night";
-  document.documentElement.style.setProperty(
-    "--color-dark",
-    isNight ? "255, 255, 255" : "10, 10, 20"
-  );
-  document.documentElement.style.setProperty(
-    "--color-light",
-    isNight ? "10, 10, 20" : "255, 255, 255"
-  );
-};
+// Apply theme based on user's preferred color scheme
+applyTheme(
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day"
+);
 
 // Function to update "show more" button text & value
 const updateShowMoreButton = () => {
