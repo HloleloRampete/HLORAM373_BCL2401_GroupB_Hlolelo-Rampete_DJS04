@@ -18,10 +18,6 @@ createBookPreviews(
 createOptions(genres, "All Genres", getElement("[data-search-genres]"));
 createOptions(authors, "All Authors", getElement("[data-search-authors]"));
 
-// Populate genre and author dropdowns
-createOptions(genres, "All Genres", getElement("[data-search-genres]"));
-createOptions(authors, "All Authors", getElement("[data-search-authors]"));
-
 // Function to apply theme based on user preference
 const applyTheme = (theme) => {
   const isNight = theme === "night";
