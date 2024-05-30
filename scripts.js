@@ -7,14 +7,6 @@ import "./bookPreview.js";
 let page = 1;
 let matches = books;
 
-// Function to get DOM element by selector
-const getElement = (selector) => document.querySelector(selector);
-
-// Initial rendering of book previews
-createBookPreviews(
-  matches.slice(0, BOOKS_PER_PAGE),
-  getElement("[data-list-items]")
-);
 
 // Initial rendering of book previews
 createBookPreviews(
