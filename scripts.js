@@ -14,21 +14,9 @@ createBookPreviews(
   getElement("[data-list-items]")
 );
 
-// Function to create and append options to a select element
-const createOptions = (options, defaultOption, container) => {
-  const fragment = document.createDocumentFragment();
-  const firstOption = document.createElement("option");
-  firstOption.value = "any";
-  firstOption.innerText = defaultOption;
-  fragment.appendChild(firstOption);
-  Object.entries(options).forEach(([id, name]) => {
-    const element = document.createElement("option");
-    element.value = id;
-    element.innerText = name;
-    fragment.appendChild(element);
-  });
-  container.appendChild(fragment);
-};
+// Populate genre and author dropdowns
+createOptions(genres, "All Genres", getElement("[data-search-genres]"));
+createOptions(authors, "All Authors", getElement("[data-search-authors]"));
 
 // Populate genre and author dropdowns
 createOptions(genres, "All Genres", getElement("[data-search-genres]"));
