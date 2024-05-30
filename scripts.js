@@ -8,7 +8,7 @@ import {
   createOptions,
   applyTheme,
 } from "./functions.js";
-import "./search-filter.js";
+
 
 
 // Initializing variables for pagination and filtering
