@@ -1,7 +1,8 @@
 // Importing data and constants from external module
 import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
-// Importing BookPreview function
-import "./book-preview.js";
+import "./bookPreview.js";
+
+
 // Initializing variables for pagination and filtering
 let page = 1;
 let matches = books;
