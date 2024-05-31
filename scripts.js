@@ -129,11 +129,13 @@ getElement("[data-search-form]").addEventListener("submit", (event) => {
 
 // Added event listener to preview books
 getElement("[data-list-button]").addEventListener("click", () => {
+  page++;
+  const start = (page - 1) * BOOKS_PER_PAGE;
+  const end = start + BOOKS_PER_PAGE;
   createBookPreviews(
-    matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE),
+    matches.slice(start, end),
     getElement("[data-list-items]")
   );
-  page++;
   updateShowMoreButton();
 });
 
